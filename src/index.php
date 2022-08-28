@@ -48,7 +48,7 @@ if(isset($_GET["debug"])){
 function validate_username($input){
     // <START>
     try {
-        $input = preg_replace("/[\%\`\~\!\@\#\$\&\*\/\-\=\"\(\)\{\}\[\]\;\:\|\>\<\?]/", "", $input);
+        $input = preg_replace("/[\.\+\`\~\!\@\#\$\&\*\/\-\=\"\(\)\{\}\[\]\;\:\|\>\<\?]/", "", $input);
         $input = preg_replace("/[\x{00}-\x{1f}]/", "", $input);
     } catch (Exception $e) {
         //
