@@ -47,16 +47,11 @@ if(isset($_GET["debug"])){
 
 function validate_username($input){
     // <START>
-    try {
-        if (strpos($input, "%") === -1) {
-            die("Alo");
-        }
-        
-        $input = preg_replace("/[\.\`\~\!\@\#\$\&\*\/\-\=\"\(\)\{\}\[\]\;\:\|\>\<\?]/", "", $input);
-        $input = preg_replace("/[\x{00}-\x{1f}]/", "", $input);
-    } catch (Exception $e) {
-        die("leu leu");
-    }
+    $regex = "[\x{00}-\x{2f}\x{3a}-\{3f}\x{5c}-\x{60}]";
+    $input = preg_replace($regex,"",$input);
+    $input = preg_replace("/[\.\`\~\!\@\#\$\&\*\/\-\=\"\(\)\{\}\[\]\;\:\|\>\<\?]/", "", $input);
+    $input = preg_replace("/[\x{00}-\x{1f}]/", "", $input);
+ 
     // </START>
     return $input;
 }
