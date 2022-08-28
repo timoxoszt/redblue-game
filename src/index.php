@@ -52,8 +52,8 @@ function validate_username($input){
             die("Alo");
         }
         
-        $input = preg_replace("/[\`\~\!\@\#\$\&\*\/\-\=\"\(\)\{\}\[\]\;\:\|\>\<\?]/", "", $input);
-        $input = preg_replace("/\x{00}-\x{1f}/", "", $input);
+        $input = preg_replace("/[\.\`\~\!\@\#\$\&\*\/\-\=\"\(\)\{\}\[\]\;\:\|\>\<\?]/", "", $input);
+        $input = preg_replace("/[\x{00}-\x{1f}]/", "", $input);
     } catch (Exception $e) {
         die("leu leu");
     }
