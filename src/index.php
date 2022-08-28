@@ -51,12 +51,10 @@ function validate_username($input){
     // <START>
     try {
         $match = array();
-        preg_match("/\%\w+/", $input, $match);
-        if (urldecode($match) === "%") {
-            $input = preg_replace("/[\%]/", "", $input);
-        }
-        $input = preg_replace("/[ \.\+\`\~\!\@\#\$\&\*\/\-\=\"\(\)\{\}\[\]\;\:\|\>\<\?]/", "", $input);
+        $input = preg_replace("/[\%\.\+\`\~\!\@\#\$\&\*\/\-\=\"\(\)\{\}\[\]\;\:\|\>\<\?]/", "", $input);
         $input = preg_replace("/[\x{00}-\x{1f}]/", "", $input);
+        $input = preg_replace("/(cat|ls|nl|tail|head|cd|file|curl|rev|cd|secret_file|base64|echo|cut|diff|php)/", md5(rand(1, 99999)), $input);
+
     } catch (Exception $e) {
         //
     }
