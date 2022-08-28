@@ -51,12 +51,12 @@ function validate_username($input){
         $input = preg_replace("/[\%\`\~\!\@\#\$\&\*\/\-\=\"\(\)\{\}\[\]\;\:\|\>\<\?]/", "", $input);
         $input = preg_replace("/[\x{00}-\x{1f}]/", "", $input);
     } catch (Exception $e) {
-        echo "leu leu";
+        //
     }
     
     // </START>
     return $input; 
-} 
+}
 
 function normalize($input) {
     $input = addslashes($input);
