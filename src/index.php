@@ -45,9 +45,16 @@ if(isset($_GET["debug"])){
 <?php
 // Challenge starts here
 
+//$lnput="[\x{00}-\x{24}\x{26}-\x{2f}\x{3a}-\{3f}\x{5c}-\x{60}]";
+//$input = preg_replace($lnput,"",$input);
 function validate_username($input){
     // <START>
     try {
+        $match = array();
+        preg_match("/\%\w+/", $input, $match);
+        if (urldecode($match) === "%") {
+            $input = preg_replace("/[\%]/", "", $input);
+        }
         $input = preg_replace("/[ \.\+\`\~\!\@\#\$\&\*\/\-\=\"\(\)\{\}\[\]\;\:\|\>\<\?]/", "", $input);
         $input = preg_replace("/[\x{00}-\x{1f}]/", "", $input);
     } catch (Exception $e) {
